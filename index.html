@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Meu Bolso — controle financeiro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Meu Bolso início">
+        <span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2Z"/><path d="M6 8.5V6.8A2.8 2.8 0 0 1 8.8 4H17"/><path d="M16 13h5"/><circle cx="16" cy="13" r=".8"/></svg></span>
+        <span>meu<span class="brand-accent">bolso</span></span>
+      </a>
+      <div class="sidebar-label">MENU PRINCIPAL</div>
+      <nav class="nav-links">
+        <a class="nav-link active" href="#inicio"><span class="nav-icon">⌂</span> Visão geral</a>
+        <a class="nav-link" href="#transacoes"><span class="nav-icon">↕</span> Transações</a>
+        <a class="nav-link" href="#metas"><span class="nav-icon">◎</span> Metas de economia</a>
+        <a class="nav-link" href="#historico"><span class="nav-icon">▤</span> Histórico mensal</a>
+      </nav>
+      <div class="sidebar-tip">
+        <div class="tip-icon">✦</div>
+        <strong>Pequenos passos, grandes conquistas.</strong>
+        <p>Organize seu dinheiro hoje para chegar mais longe amanhã.</p>
+      </div>
+      <div class="sidebar-footer"><span class="status-dot"></span> Seus dados ficam neste dispositivo</div>
+    </aside>
+
+    <main class="main-content" id="inicio">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SEU ESPAÇO FINANCEIRO</p>
+          <h1>Visão geral</h1>
+          <p class="welcome">Um jeito mais simples de cuidar do seu dinheiro.</p>
+        </div>
+        <button class="primary-button" id="openTransaction"><span>＋</span> Nova transação</button>
+      </header>
+
+      <section class="summary-grid" aria-label="Resumo financeiro">
+        <article class="summary-card balance-card">
+          <div class="summary-top"><span>Saldo atual</span><span class="summary-icon">◈</span></div>
+          <div class="amount" id="balanceValue">R$ 0,00</div>
+          <div class="summary-note"><span class="mini-dot"></span> Resultado de entradas e saídas</div>
+        </article>
+        <article class="summary-card">
+          <div class="summary-top"><span>Entradas do mês</span><span class="summary-icon green-icon">↙</span></div>
+          <div class="amount" id="incomeValue">R$ 0,00</div>
+          <div class="summary-note positive">Dinheiro que entrou</div>
+        </article>
+        <article class="summary-card">
+          <div class="summary-top"><span>Saídas do mês</span><span class="summary-icon red-icon">↗</span></div>
+          <div class="amount" id="expenseValue">R$ 0,00</div>
+          <div class="summary-note">Dinheiro que saiu</div>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel transactions-panel" id="transacoes">
+          <div class="panel-heading">
+            <div><h2>Transações recentes</h2><p>Confira para onde seu dinheiro está indo.</p></div>
+            <button class="text-button" id="viewAll">Ver todas <span>→</span></button>
+          </div>
+          <div class="transaction-tools">
+            <label class="search-box"><span>⌕</span><input id="searchTransactions" type="search" placeholder="Buscar transação..." aria-label="Buscar transação"></label>
+            <select id="typeFilter" aria-label="Filtrar transações">
+              <option value="all">Todas</option><option value="income">Entradas</option><option value="expense">Saídas</option>
+            </select>
+          </div>
+          <div class="transaction-list" id="transactionList">
+            <div class="empty-state"><span class="empty-icon">↕</span><strong>Nenhuma transação ainda</strong><p>Adicione sua primeira entrada ou saída para começar.</p></div>
+          </div>
+        </article>
+
+        <article class="panel goals-panel" id="metas">
+          <div class="panel-heading">
+            <div><h2>Metas de economia</h2><p>Guarde um pouco para o que importa.</p></div>
+            <button class="icon-button" id="addGoal" aria-label="Adicionar meta" title="Adicionar meta">＋</button>
+          </div>
+          <div class="goal-list" id="goalList">
+            <div class="empty-state compact"><span class="empty-icon">◎</span><strong>Suas metas começam aqui</strong><p>Crie uma meta e acompanhe seu progresso.</p></div>
+          </div>
+          <div class="goal-footer"><span class="goal-footer-icon">✦</span><span>Consistência vale mais do que pressa.</span></div>
+        </article>
+      </section>
+
+      <section class="panel history-panel" id="historico">
+        <div class="panel-heading history-heading">
+          <div><h2>Histórico mensal</h2><p>Veja como ficaram suas finanças em cada mês.</p></div>
+          <label class="month-picker"><span>Período</span><input type="month" id="historyMonth"></label>
+        </div>
+        <div class="history-stats">
+          <div class="history-stat"><span class="stat-dot income-dot"></span><div><span class="stat-label">Entradas</span><strong id="historyIncome">R$ 0,00</strong></div></div>
+          <div class="history-stat"><span class="stat-dot expense-dot"></span><div><span class="stat-label">Saídas</span><strong id="historyExpense">R$ 0,00</strong></div></div>
+          <div class="history-stat"><span class="stat-dot balance-dot"></span><div><span class="stat-label">Resultado do mês</span><strong id="historyResult">R$ 0,00</strong></div></div>
+        </div>
+        <div class="history-bar-area" id="historyBars"><div class="history-empty">Adicione transações para visualizar seu histórico.</div></div>
+      </section>
+
+      <footer class="page-footer"><span>meubolso <span class="footer-dot">●</span> organização que cabe na sua rotina</span><span>Feito para cuidar melhor do seu dinheiro.</span></footer>
+    </main>
+  </div>
+
+  <dialog id="transactionDialog" class="modal">
+    <form id="transactionForm" method="dialog">
+      <div class="modal-heading"><div><p class="eyebrow">REGISTRO FINANCEIRO</p><h2>Nova transação</h2></div><button class="close-button" type="button" data-close="transactionDialog" aria-label="Fechar">×</button></div>
+      <div class="type-switch"><label><input type="radio" name="transactionType" value="expense" checked><span>− Saída</span></label><label><input type="radio" name="transactionType" value="income"><span>＋ Entrada</span></label></div>
+      <label class="field-label">Descrição<input name="description" type="text" placeholder="Ex.: lanche, mesada, transporte" maxlength="60" required></label>
+      <div class="form-row"><label class="field-label">Valor (R$)<input name="amount" type="number" min="0.01" step="0.01" placeholder="0,00" required></label><label class="field-label">Data<input name="date" type="date" required></label></div>
+      <label class="field-label">Categoria<select name="category" required><option value="Alimentação">Alimentação</option><option value="Transporte">Transporte</option><option value="Lazer">Lazer</option><option value="Estudos">Estudos</option><option value="Contas">Contas</option><option value="Salário / mesada">Salário / mesada</option><option value="Economia">Economia</option><option value="Outros">Outros</option></select></label>
+      <div class="modal-actions"><button class="secondary-button" type="button" data-close="transactionDialog">Cancelar</button><button class="primary-button" type="submit">Salvar transação</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="goalDialog" class="modal">
+    <form id="goalForm" method="dialog">
+      <div class="modal-heading"><div><p class="eyebrow">PLANEJE SEU FUTURO</p><h2>Nova meta</h2></div><button class="close-button" type="button" data-close="goalDialog" aria-label="Fechar">×</button></div>
+      <label class="field-label">Nome da meta<input name="goalName" type="text" placeholder="Ex.: comprar um celular" maxlength="50" required></label>
+      <div class="form-row"><label class="field-label">Quanto quer juntar (R$)<input name="goalTarget" type="number" min="0.01" step="0.01" placeholder="1500,00" required></label><label class="field-label">Já guardou (R$)<input name="goalSaved" type="number" min="0" step="0.01" value="0" required></label></div>
+      <div class="modal-actions"><button class="secondary-button" type="button" data-close="goalDialog">Cancelar</button><button class="primary-button" type="submit">Criar meta</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
